@@ -1,24 +1,21 @@
 const express = require("express");
 const mongoose = require("mongoose");
-// const bodyparser = require("body-parser")
-// const dotenv = require("dotenv")
+const dotenv = require("dotenv")
 const app = express();
+const bodyParser = require("body-parser")
 const path = require("path");
-// dotenv.config();
 
+dotenv.config();
 app.use(express.static(__dirname + "/views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
-main()
-  .then(() => {
-    console.log("Connection Successful");
-  })
-  .catch((err) => console.log(err));
-
-async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/registerForm");
-}
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.wde4mvo.mongodb.net/?retryWrites=true&w=majority`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 const registrationSchema = new mongoose.Schema({
   firstName: String,
