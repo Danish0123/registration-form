@@ -12,7 +12,10 @@ app.use(express.urlencoded({ extended: true }));
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.wde4mvo.mongodb.net/?retryWrites=true&w=majority`);
+mongoose.connect(`mongodb//${username}:${password}@cluster0.wde4mvo.mongodb.net/?retryWrites=true&w=majority`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 const registrationSchema = new mongoose.Schema({
   firstName: String,
