@@ -12,9 +12,8 @@ app.use(express.urlencoded({ extended: true }));
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
-mongoose.connect(`mongodb://${username}:${password}@cluster0.wde4mvo.mongodb.net/?retryWrites=true&w=majority`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
+mongoose.connect(`mongodb://${username}:${password}@cluster0.wde4mvo.mongodb.net/registerForm`, {
+  serverSelectionTimeoutMS: 5000,
 });
 
 const registrationSchema = new mongoose.Schema({
