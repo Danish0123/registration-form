@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
-mongoose.connect(`mongodb://${username}:${password}@cluster0.wde4mvo.mongodb.net/registerForm`, {
+mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.wde4mvo.mongodb.net/registrationFormDB`, {
   serverSelectionTimeoutMS: 5000,
 });
 
