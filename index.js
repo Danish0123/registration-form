@@ -10,6 +10,8 @@ app.use(express.static(__dirname + "/views"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 
+const port = process.env.PORT || 3000;
+
 const username = process.env.MONGODB_USERNAME;
 const password = process.env.MONGODB_PASSWORD;
 mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.wde4mvo.mongodb.net/registrationFormDB`, {
@@ -56,6 +58,6 @@ app.post("/register", async(req, res) => {
   }
 });
 
-app.listen(8080, () => {
-  console.log(`Server is listening on port 8080`);
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
 });
